@@ -9,7 +9,7 @@ O UniCaronas é um projeto de aplicação web desenvolvido para a disciplina "Tr
 * **Promova a segurança:** O sistema verifica a identidade dos usuários e permite que avaliem uns aos outros após cada carona.
 * **Organize o processo:** A plataforma oferece ferramentas para agendar caronas, definir pontos de encontro e comunicar-se com outros usuários.
 
-**4. Contribuição**
+## Contribuição**
 
 O projeto UniCaronas está aberto à colaboração da comunidade. Se você deseja contribuir com o desenvolvimento da plataforma, entre em contato com a equipe através do repositório do GitHub.
 

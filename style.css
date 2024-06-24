@@ -1,0 +1,77 @@
+.titulo{
+
+    font-family: 'Poppins', sans-serif;
+    color: #6c63ff; /* Matching the color to the one in the image */
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.search-bar {
+    display: flex;
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 -8px 16px rgba(0, 0, 0, 0.1);;
+    overflow: hidden;
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-right: 1px solid #bdbbbb;
+}
+
+.search-input:first-of-type {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.search-input:last-of-type {
+    border-right: none;
+}
+
+.search-button {
+    background-color: #6c63ff;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.search-button svg {
+    fill: #fff;
+}
+
+.search-button:hover {
+    background-color: #5751d9;
+}
+
+@media (max-width: 576px) {
+    .search-input {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .search-button {
+        padding: 10px 15px;
+    }
+
+    .search-button svg {
+        width: 20px;
+        height: 20px;
+    }
+}

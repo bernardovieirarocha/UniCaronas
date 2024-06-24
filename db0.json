@@ -1,0 +1,46 @@
+{
+  "trajetos": [
+    {
+      "origem": "UFMG - Pampulha",
+      "destino": "Savassi",
+      "horario": "12:30",
+      "diaSemana": "Segunda-feira",
+      "id": "ccff"
+    },
+    {
+      "origem": "Cidade Nova",
+      "destino": "PUC Coração Eucarístico",
+      "horario": "20:45",
+      "diaSemana": "Terça-feira",
+      "id": "ca2e"
+    },
+    {
+      "id": "8829",
+      "origem": "Buritis",
+      "destino": "UFMG - Escola de Arquitetura",
+      "horario": "06:00",
+      "diaSemana": "Quarta-feira"
+    },
+    {
+      "origem": "Me delete!",
+      "destino": "Clique em Deletar!",
+      "horario": "01:01",
+      "diaSemana": "Quinta-feira",
+      "id": "3b3b"
+    },
+    {
+      "id": "f8cd",
+      "origem": "PUC Coração Eucarístico",
+      "destino": "Ouro Preto",
+      "horario": "21:40",
+      "diaSemana": "Sexta-feira"
+    },
+    {
+      "origem": "Me edite!",
+      "destino": "Clique em Editar!",
+      "horario": "00:00",
+      "diaSemana": "Sexta-feira",
+      "id": "4594"
+    }
+  ]
+}

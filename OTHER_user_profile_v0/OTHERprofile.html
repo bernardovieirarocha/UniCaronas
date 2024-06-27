@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniCaronas OTHER Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="OTHERprofile.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg" style="background-color: rgba(167, 77, 250, 0.315)">
+            <div class="container-md">
+                <a class="navbar-brand mb-0 h1 fw-bold" href="#">
+                    <img src="imgprofile/search.svg" alt="Logo" width="28" height="24" class="d-inline-block align-text-top">
+                    UniCaronas
+                </a>
+
+                <div class="d-flex flex-row-reverse">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">
+                                <img src="imgprofile/house.svg" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">
+                                Home &nbsp &nbsp &nbsp     
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <img src="imgprofile/chat.svg" alt="Logo" width="22" height="22" class="d-inline-block align-text-top">
+                                Mensagens &nbsp &nbsp &nbsp
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <img src="imgprofile/gear.svg" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">
+                                Configurações &nbsp &nbsp &nbsp
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Meu Perfil
+                            </a>
+                            <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Meus trajetos</a></li>
+                            <li><a class="dropdown-item" href="#">Editar cadastro</a></li>
+                            <li><a class="dropdown-item" href="#">Log out</a></li>
+                            </ul>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+          </nav>
+    </header>
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-picture">
+                <img src="imgprofile/pessoa2.jpg" alt="Profile Picture">
+            </div>
+            <div class="profile-info">
+                <h1 class="username">Fabiana Oliveira</h1>
+                <!--<button class="edit-profile-btn">Editar Perfil</button>-->
+                <button class="edit-profile-btn">Seguir</button>
+                <button class="edit-profile-btn">Mandar mensagem</button>
+                <button class="edit-profile-btn">Avaliar</button>
+                <div class="profile-stats">
+                    <span><strong>🚶🏻‍♂️</strong> passageiro</span>
+                    <span><strong>10</strong> seguidores</span>
+                    <span><strong>21</strong> seguindo</span>
+                    <span><strong>4.5</strong> ⭐</span>
+                </div>
+                <div class="profile-bio">
+                    <p>Estou no quarto período de Engenharia Química Diurno na UFMG. Tenho 24 anos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-3">
+            <h2>Trajetos de Carona</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Origem</th>
+                  <th>Destino</th>
+                  <th>Horário</th>
+                  <th>Dia da Semana</th>
+                  <!--<th>Ações</th>-->
+                </tr>
+              </thead>
+              <tbody id="trajetoData">
+              </tbody>
+            </table>
+          
+            <!-- Formulário para adicionar/editar trajetos 
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#trajetoModal" id="addTrajetoButton">Adicionar Trajeto</button>-->
+            <!-- Modal 
+            <div class="modal fade" id="trajetoModal" tabindex="-1" role="dialog" aria-labelledby="trajetoModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="trajetoModalLabel">Novo Trajeto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="trajetoForm">
+                      <div class="form-group">
+                        <label for="origem">Origem</label>
+                        <input type="text" class="form-control" id="origem">
+                      </div>
+                      <div class="form-group">
+                        <label for="destino">Destino</label>
+                        <input type="text" class="form-control" id="destino">
+                      </div>
+                      <div class="form-group">
+                        <label for="horario">Horário</label>
+                        <input type="time" class="form-control" id="horario">
+                      </div>
+                      <div class="form-group">
+                        <label for="diaSemana">Dia da Semana</label>
+                        <select class="form-control" id="diaSemana">
+                          <option>Segunda-feira</option>
+                          <option>Terça-feira</option>
+                          <option>Quarta-feira</option>
+                          <option>Quinta-feira</option>
+                          <option>Sexta-feira</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="saveTrajeto">Salvar Trajeto</button>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+        </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="OTHERapp0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+MY diz respeito à página de usuário do próprio indivíduo que está logado. Nesse caso, existem os botões para edição de trajetos e do perfil. OTHER se refere a como é visualizada uma página de terceiros, onde o único interesse é ler os dados, não existe a possibilidade de edição por parte do usuário logado.

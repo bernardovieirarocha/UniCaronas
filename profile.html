@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>UniCaronas OTHER Profile</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="./assets/css/profile.css" />
+    </head>
+    <body>
+        <header>
+            <nav
+                class="navbar navbar-expand-lg"
+                style="background-color: rgba(167, 77, 250, 0.315)"
+            >
+                <div class="container-md">
+                    <a class="navbar-brand mb-0 h1 fw-bold" href="#">
+                        <img
+                            src="./assets/img/imgprofile/search.svg"
+                            alt="Logo"
+                            width="28"
+                            height="24"
+                            class="d-inline-block align-text-top"
+                        />
+                        UniCaronas
+                    </a>
+
+                    <div class="d-flex flex-row-reverse">
+                        <button
+                            class="navbar-toggler"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavDropdown"
+                            aria-controls="navbarNavDropdown"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                        >
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div
+                            class="collapse navbar-collapse"
+                            id="navbarNavDropdown"
+                        >
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a
+                                        class="nav-link active"
+                                        aria-current="page"
+                                        href="#"
+                                    >
+                                        <img
+                                            src="./assets/img/imgprofile/house.svg"
+                                            alt="Logo"
+                                            width="24"
+                                            height="24"
+                                            class="d-inline-block align-text-top"
+                                        />
+                                        Home &nbsp &nbsp &nbsp
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <img
+                                            src="./assets/img/imgprofile/chat.svg"
+                                            alt="Logo"
+                                            width="22"
+                                            height="22"
+                                            class="d-inline-block align-text-top"
+                                        />
+                                        Mensagens &nbsp &nbsp &nbsp
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <img
+                                            src="./assets/img/imgprofile/gear.svg"
+                                            alt="Logo"
+                                            width="24"
+                                            height="24"
+                                            class="d-inline-block align-text-top"
+                                        />
+                                        Configurações &nbsp &nbsp &nbsp
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a
+                                        class="nav-link dropdown-toggle"
+                                        href="#"
+                                        role="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                    >
+                                        Meu Perfil
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                >Meus trajetos</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                >Editar cadastro</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                >Log out</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="profile-container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <img
+                                id="profile_pic"
+                                src="./assets/img/imgprofile/pessoa2.jpg"
+                                alt="Profile Picture"
+                                class="rounded-circle"
+                                style="width: 150px; height: 150px"
+                            />
+                        </div>
+                        <div class="col-md-8">
+                            <h2 id="username" class="card-title"></h2>
+                            <button class="btn btn-outline-primary btn-sm">
+                                Seguir
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm">
+                                Avaliar
+                            </button>
+                            <p class="mt-2">
+                                <span id="idade"> </span><br />
+                                <span id="universidade"></span><br />
+                                <span id="telefone"></span><br />
+                                <span id="carro"></span>
+                            </p>
+                            <p id="bio" class="card-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mt-3">
+                <h2>Trajetos de Carona</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Origem</th>
+                                <th>Destino</th>
+                                <th>Horário</th>
+                                <th>Dia da Semana</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trajetoData"></tbody>
+                    </table>
+                </div>
+                <!-- Modal Detalhes Caronas -->
+                <div
+                    class="modal fade"
+                    id="staticBackdrop"
+                    data-bs-backdrop="static"
+                    data-bs-keyboard="false"
+                    tabindex="-1"
+                    aria-labelledby="staticBackdropLabel"
+                    aria-hidden="true"
+                >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1
+                                    class="modal-title fs-5"
+                                    id="staticBackdropLabel"
+                                ></h1>
+                            </div>
+                            <div id="modal-body" class="modal-body"></div>
+                            <div class="modal-footer">
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                >
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="./assets/scripts/profile.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

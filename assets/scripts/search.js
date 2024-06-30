@@ -1,6 +1,6 @@
 // const api = 'https://json-servert1.glitch.me';
 
-const api = 'https://json-servert1.glitch.me'
+const api = "http://localhost:3000";
 
 
 function showLoadingSpinner() {

@@ -1,12 +1,12 @@
-const api = "https://json-servert1.glitch.me";
+const api = "http://localhost:3000";
 
 const URLParams = new URLSearchParams(window.location.search);
 
 const userID = URLParams.get("userID");
 const desiredTrajeto = URLParams.get("desiredTrajeto");
 
-const mulheresImagens = ['pessoa1.jpg', 'pessoa2.jpg', 'pessoa3.jpg']
-const homensImagens = [ 'pessoa4.jpg', 'pessoa5.jpg', ]
+const mulheresImagens = ["pessoa1.jpg", "pessoa2.jpg", "pessoa3.jpg"];
+const homensImagens = ["pessoa4.jpg", "pessoa5.jpg"];
 
 function dayOfWeekAsNumber(day) {
     const map = { Dom: 0, Seg: 1, Ter: 2, Qua: 3, Qui: 4, Sex: 5, Sab: 6 };
@@ -49,23 +49,34 @@ function formatDateForCalendar(date) {
     return formattedDate;
 }
 function loadUserProfile() {
-  fetch(`${api}/users/${userID}`)
-      .then(response => response.json())
-      .then(user => {
-          $('#username').text(user.nome || 'Usuário');
-          $('#idade').html(`<strong>Idade:</strong> ${user.idade}`);
-          $('#telefone').html(`<strong>Telefone:</strong> ${user.telefone}`);
-          $('#carro').html(`<strong>Carro</strong>: ${user.carro.marca} ${user.carro.modelo} (${user.carro.cor})`);
-          $("#universidade").html(`<strong>Universidade:</strong> ${user.Universidade}`);
-          $('#bio').text(user.bio || 'Sem biografia disponível');
-          $('#profile_pic').attr('src', user.sexo === "masculino" 
-              ? "./assets/img/imgprofile/" + homensImagens[Math.floor(Math.random() * homensImagens.length)]
-              : "./assets/img/imgprofile/" + mulheresImagens[Math.floor(Math.random() * mulheresImagens.length)]);
-      })
-      .catch(error => console.error("Erro ao buscar usuário:", error));
+    fetch(`${api}/users/${userID}`)
+        .then((response) => response.json())
+        .then((user) => {
+            $("#username").text(user.nome || "Usuário");
+            $("#idade").html(`<strong>Idade:</strong> ${user.idade}`);
+            $("#telefone").html(`<strong>Telefone:</strong> ${user.telefone}`);
+            $("#carro").html(
+                `<strong>Carro</strong>: ${user.carro.marca} ${user.carro.modelo} (${user.carro.cor})`
+            );
+            $("#universidade").html(
+                `<strong>Universidade:</strong> ${user.Universidade}`
+            );
+            $("#bio").text(user.bio || "Sem biografia disponível");
+            $("#profile_pic").attr(
+                "src",
+                user.sexo === "masculino"
+                    ? "./assets/img/imgprofile/" +
+                          homensImagens[
+                              Math.floor(Math.random() * homensImagens.length)
+                          ]
+                    : "./assets/img/imgprofile/" +
+                          mulheresImagens[
+                              Math.floor(Math.random() * mulheresImagens.length)
+                          ]
+            );
+        })
+        .catch((error) => console.error("Erro ao buscar usuário:", error));
 }
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
     fetchTrajetos(); // Carrega os trajetos ao inicializar a página
@@ -110,6 +121,10 @@ function createCarona(driver, objectTRAJETO, passenger, date) {
         trajetoID: objectTRAJETO.id,
         hour: objectTRAJETO.horario,
         mensagem: [],
+        avaliada: {
+            driver: false,
+            passenger: false,
+        },
     };
     fetch(`${api}/caronas`, {
         method: "POST",
@@ -121,15 +136,13 @@ function createCarona(driver, objectTRAJETO, passenger, date) {
         .then((response) => {
             if (response.ok) {
                 console.log("Carona marcada com sucesso!");
-                fetchTrajetos(); // Atualiza a tabela de trajetos
+                window.location.href = "chat.html";
             } else {
                 console.error("Erro ao marcar carona:", response);
             }
         })
         .catch((error) => console.error("Erro ao marcar carona:", error));
 }
-
-
 
 function handleCarona(driver, objectTRAJETO) {
     let passenger = JSON.parse(sessionStorage.getItem("usuarioCorrente"));
@@ -156,12 +169,15 @@ function handleCarona(driver, objectTRAJETO) {
         });
         $("#staticBackdrop").modal("show");
     } else {
-        let date = formatDateForCalendar(findNextAvailableDate(objectTRAJETO.diaSemana));
+        let date = formatDateForCalendar(
+            findNextAvailableDate(objectTRAJETO.diaSemana)
+        );
+        console.log("Date: ", date);
         createCarona(driver, objectTRAJETO, passenger, date);
     }
 }
 
-// TODO: Must create a function to handle MaxPassengers 
+// TODO: Must create a function to handle MaxPassengers
 function fetchTrajetos() {
     fetch(`${api}/users`)
         .then((response) => response.json())

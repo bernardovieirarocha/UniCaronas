@@ -11,6 +11,7 @@
             crossorigin="anonymous"
         />
         <link rel="stylesheet" href="./assets/css/profile.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     </head>
     <body>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -56,7 +57,7 @@
                                     <a
                                         class="nav-link active"
                                         aria-current="page"
-                                        href="#"
+                                        href="homepage.html"
                                     >
                                         <img
                                             src="./assets/img/imgprofile/house.svg"
@@ -69,7 +70,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="chat.html">
                                         <img
                                             src="./assets/img/imgprofile/chat.svg"
                                             alt="Logo"
@@ -114,7 +115,7 @@
                                             >
                                         </li>
                                         <li>
-                                            <a class="dropdown-item"  href="#"
+                                            <a class="dropdown-item" onclick="logout()"  href="#"
                                                 >Log out</a
                                             >
                                         </li>
@@ -140,18 +141,17 @@
                             />
                         </div>
                         <div class="col-md-8">
-                            <h2 id="username" class="card-title"></h2>
+                            <h2 id="username" class="card-title"></h2><span id="avaliacao"></span>
                             <button class="btn btn-outline-primary btn-sm">
                                 Seguir
                             </button>
-                            <button class="btn btn-outline-secondary btn-sm">
-                                Avaliar
-                            </button>
+                            
                             <p class="mt-2">
                                 <span id="idade"> </span><br />
                                 <span id="universidade"></span><br />
                                 <span id="telefone"></span><br />
-                                <span id="carro"></span>
+                                <span id="carro"></span><br/>
+                                <span id="validacaoInstitucional"></span>
                             </p>
                             <p id="bio" class="card-text"></p>
                         </div>

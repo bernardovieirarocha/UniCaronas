@@ -186,17 +186,17 @@ $(document).ready(function () {
             delete dataUser.carro;
         }
 
-        // $.ajax({
-        //     url: `${cadastroAPI}`,
-        //     type: "POST",
-        //     contentType: "application/json",
-        //     data: JSON.stringify(dataUser),
-        // }).done(function (response) {
-        //     if (response.status == 'success') {
-        //         alert("Cadastro realizado com sucesso!");
-        //         window.location.href = "login.html";
-        //     }
-        // })
+        $.ajax({
+            url: `${cadastroAPI}`,
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(dataUser),
+        }).done(function (response) {
+            if (response.status == 'success') {
+                alert("Cadastro realizado com sucesso!");
+                window.location.href = "login.html";
+            }
+        })
         console.log(dataUser);
     });
 });

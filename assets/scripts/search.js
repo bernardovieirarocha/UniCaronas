@@ -180,6 +180,7 @@ function fetchUsers(startPoint, destination) {
                             email: user.email,
                             USERid: user.id,
                             trajeto: trajeto,
+                            sexo: user.sexo,
                         });
                     }
                 });
@@ -200,10 +201,11 @@ function displayResults(results) {
     if (results.length) {
         results.forEach((result) => {
             const URL = window.location.href.replace("homepage.html", "") + `profile.html?userID=${result.USERid}&desiredTrajeto=${result.trajeto.id}`;
-            const imagePath = result.sexo === "masculino"
+            const imagePath = result.sexo == "masculino"
                 ? "./assets/img/imgprofile/" + homensImagens[Math.floor(Math.random() * homensImagens.length)]
                 : "./assets/img/imgprofile/" + mulheresImagens[Math.floor(Math.random() * mulheresImagens.length)];
             
+
             var content = `
             <div class="card mb-3" style="width: 100%;">
                 <div class="row g-0">

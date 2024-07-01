@@ -80,6 +80,13 @@ function loadUserProfile() {
                               Math.floor(Math.random() * mulheresImagens.length)
                           ]
             );
+            $("#avaliacao").html(`${user.notaAvaliacao.media}  <i class="bi bi-star-fill"></i>`)
+            if (user.validadacaoInstitucional == true) {
+                $("#validacaoInstitucional").html(`<strong>Validação Institucional: </strong>  <i style="color:green;" class="bi bi-check-circle-fill"></i>` )
+            } else {
+                $("#validacaoInstitucional").html(`<strong>Validação Institucional: </strong> <i style="color:red;" class="bi bi-x-circle-fill"></i>` )
+
+            }
         })
         .catch((error) => console.error("Erro ao buscar usuário:", error));
 }

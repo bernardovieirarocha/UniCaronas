@@ -29,17 +29,12 @@
     </head>
 
     <body>
-      <script>
-        sessionStorage.setItem(
-            "usuarioCorrente",
-            JSON.stringify({
-                id: "c0fff893-e8c4-4e15-9cde-1c007b4dc8f0",
-                login: "RitaMendes",
-                email: "ritamendes@gmail.com",
-                nome: "Rita Mendes",
-            })
-        );
-    </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+        <script src="./assets/scripts/checkLogin.js"></script>
+        <script src="./assets/scripts/login.js"></script>
+
+
         <header>
             <nav
                 class="navbar navbar-expand-lg"
@@ -136,7 +131,7 @@
                                             >
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#"
+                                            <a class="dropdown-item" onclick="logout()" href="#"
                                                 >Log out</a
                                             >
                                         </li>
@@ -539,7 +534,6 @@
 
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- Choices.js -->
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <!-- Bootstrap Bundle (includes Popper) -->

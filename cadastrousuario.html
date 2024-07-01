@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Cadastro Usuário</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+        />
+        <link rel="stylesheet" href="./assets/css/chat.css" />
+    </head>
+
+    <body class="d-flex flex-column min-vh-100">
+        <header>
+            <nav
+                class="navbar navbar-expand-lg"
+                style="background-color: rgba(167, 77, 250, 0.315)"
+            >
+                <div class="container-md">
+                    <a class="navbar-brand ms-3 mb-0 h1 fw-bold" href="#">
+                        <i class="bi bi-search">UniCaronas</i></a
+                    >
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="container mt-4">
+                <h1 class="title fs-4 text-right">Cadastro</h1>
+                <form id="formCadastro">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Nome</span>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="nomeCompleto"
+                            placeholder="Digite seu nome completo"
+                            required
+                        />
+                        <span class="input-group-text">Idade</span>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="idade"
+                            min="18"
+                            required
+                        />
+                    </div>
+                    <select id="choicesUniversidade" class="form-select">
+                        <option value="">
+                            Selecione a Universidade de Destino
+                        </option>
+                    </select>
+
+                    <select id="bairro" class="form-select" required>
+                        <option value="">Selecione o Bairro de Partida</option>
+                    </select>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">CEP</span>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="cep"
+                            placeholder="Digite seu CEP"
+                            required
+                        />
+                        <span class="input-group-text">Cidade</span>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="cidade"
+                            required
+                        />
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Sexo</span>
+                        <select id="sexo" class="form-select">
+                            <option selected>Sexo</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Telefone</span>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="telefone"
+                            placeholder="Seu telefone"
+                            required
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <p style="color: rgba(167, 77, 250)">
+                            O seu endereço não será divulgado no seu perfil
+                            público. Apenas o bairro ficará visível para outros
+                            usuários.
+                        </p>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check ms-2">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            id="tipoPassageiro"
+                                            name="tipoUsuario"
+                                            onchange="toggleCarDetails()"
+                                            value="1"
+                                            required
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="tipoPassageiro"
+                                            >Passageiro
+                                        </label>
+                                        <p>
+                                            <small
+                                                >Quero apenas pegar carona no
+                                                carro de outras pessoas
+                                            </small>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check ms-2">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            id="tipoMotorista"
+                                            name="tipoUsuario"
+                                            onchange="toggleCarDetails()"
+                                            value="2"
+                                            required
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="tipoMotorista"
+                                            >Motorista
+                                        </label>
+                                        <p>
+                                            <small
+                                                >Quero apenas oferecer caronas
+                                                para outras pessoas no meu
+                                                carro</small
+                                            >
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check ms-2">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            id="tipoAmbos"
+                                            name="tipoUsuario"
+                                            value="3"
+                                            onchange="toggleCarDetails()"
+                                            required
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="tipoAmbos"
+                                            >Passageiro e Motorista
+                                        </label>
+                                        <p>
+                                            <small
+                                                >Quero tanto dar caronas para
+                                                outras pessoas no meu carro
+                                                quanto pegar carona no carro dos
+                                                outros</small
+                                            >
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Username</span>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="username"
+                            placeholder="Username"
+                            required
+                        />
+                        <span class="input-group-text">Senha</span>
+                        <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            name="password"
+                            placeholder="Sua senha"
+                            required
+                        />
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6 p-0">
+                                    <div class="mb-3">
+                                        <label for="emailCadastro"
+                                            >Email Cadastro</label
+                                        >
+                                        <input
+                                            type="email"
+                                            class="form-control"
+                                            id="emailCadastro"
+                                            placeholder="Email Cadastro"
+                                            required
+                                        />
+                                    </div>
+                                    <label for="emailInstitu"
+                                        >Email Institucional</label
+                                    >
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        id="emailInstitu"
+                                        placeholder="Seu email da faculdade"
+                                        required
+                                    />
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="">
+                                        <p style="color: rgba(167, 77, 250)">
+                                            O email de cadastro é o email que
+                                            você receberá as atualizações do
+                                            site.
+                                        </p>
+                                    </div>
+                                    <div class="">
+                                        <p
+                                            class=""
+                                            style="color: rgba(167, 77, 250)"
+                                        >
+                                            O email institucional é o email da
+                                            sua faculdade e serve apenas para
+                                            verificação do vínculo com a
+                                            instituição de destino.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Car details section -->
+                    <div id="carDetails" class="input-group mb-3">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="carMarca" class="form-label"
+                                        >Marca</label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="carMarca"
+                                        placeholder="Marca do carro"
+                                    />
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="carModelo" class="form-label"
+                                        >Modelo</label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="carModelo"
+                                        placeholder="Modelo do carro"
+                                    />
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="carCor" class="form-label"
+                                        >Cor</label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="carCor"
+                                        placeholder="Cor do carro"
+                                    />
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="carPlaca" class="form-label"
+                                        >Placa</label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="carPlaca"
+                                        placeholder="Placa do carro"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success mb-2">
+                        Realizar Cadastro
+                    </button>
+                </form>
+            </div>
+        </main>
+
+        <footer style="background-color: #deded5" class="mt-auto">
+            <div
+                class="text-center p-3"
+                style="background-color: rgba(0, 0, 0, 0.2)"
+            >
+                © 2024 Copyright:
+                <a class="text-dark" href="#">UniCaronas.com</a>
+            </div>
+        </footer>
+        <!-- Bootstrap JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+        <script src="./assets/scripts/signup.js"></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

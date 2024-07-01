@@ -1828,8 +1828,8 @@
   "users": [
     {
       "id": "379fd1da-088e-4f7d-91f1-bfd334b601a7",
-      "login": "RicAmorim",
-      "senha": "12345@",
+      "username": "RicAmorim",
+      "password": "12345@",
       "nome": "Ricardo Amorim",
       "email": "amorim@gmail.com",
       "idade": "25",
@@ -1882,8 +1882,8 @@
         "driver"
       ],
       "notaAvaliacao": {
-        "media": 4.5,
-        "quantidade": 2
+        "media": 4.7,
+        "quantidade": 3
       }
     },
     {
@@ -1985,7 +1985,8 @@
         "id": "89767bea-c884-46ee-a146-83c5fa6ce32e"
       },
       "trajetoID": "3",
-      "mensagem": [],
+      "mensagem": [
+      ],
       "avaliada": {
         "driver": false,
         "passenger": false
@@ -2013,6 +2014,26 @@
           "id": "bd08e0c9-c822-495e-aa31-a9bf9f9caa25"
         }
       ],
+      "avaliada": {
+        "driver": false,
+        "passenger": false
+      }
+    },
+    {
+      "id": "583b",
+      "status": "solicitacao",
+      "driver": {
+        "nome": "Ricardo Amorim",
+        "id": "379fd1da-088e-4f7d-91f1-bfd334b601a7"
+      },
+      "passenger": {
+        "nome": "Rita Mendes",
+        "id": "c0fff893-e8c4-4e15-9cde-1c007b4dc8f0"
+      },
+      "date": "2024-07-01",
+      "trajetoID": "1",
+      "hour": "8:00",
+      "mensagem": [],
       "avaliada": {
         "driver": false,
         "passenger": false

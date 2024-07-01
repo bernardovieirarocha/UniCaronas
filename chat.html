@@ -25,17 +25,11 @@
         <script src="./assets/scripts/chat.js"></script>
     </head>
     <body class="d-flex flex-column min-vh-100">
-        <script>
-            sessionStorage.setItem(
-                "usuarioCorrente",
-                JSON.stringify({
-                    id: "c0fff893-e8c4-4e15-9cde-1c007b4dc8f0",
-                    login: "RitaMendes",
-                    email: "ritamendes@gmail.com",
-                    nome: "Rita Mendes",
-                })
-            );
-        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+        <script src="./assets/scripts/checkLogin.js"></script>
+        <script src="./assets/scripts/login.js"></script>
+
         <header>
             <nav
                 class="navbar navbar-expand-lg"
@@ -125,7 +119,7 @@
                                             >
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#"
+                                            <a class="dropdown-item" id="logout" href="#"
                                                 >Log out</a
                                             >
                                         </li>
@@ -346,5 +340,6 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+
     </body>
 </html>

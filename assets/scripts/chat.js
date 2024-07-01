@@ -1,4 +1,4 @@
-const api = "http://localhost:3000/";
+const api = "http://localhost:3000/api/";
 // https://json-servert1.glitch.me/
 
 function getDiaDaSemana(dataString) {
@@ -259,6 +259,7 @@ function updateCurrentCarona(carona) {
                 console.log(data);
             },
         }).then((data) => {
+            location.reload()
             resolve(data);
         });
     })
@@ -669,6 +670,7 @@ function loadMessages(caronaCurrent, typeCurrentCarona) {
             handleNewMessage(caronaCurrent).then(() => {
                 alert("Mensagem enviada com sucesso");
             });
+            loadMessages(caronaCurrent, typeCurrentCarona);
         });
 }
 

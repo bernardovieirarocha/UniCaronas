@@ -1,9 +1,15 @@
-const api = "http://localhost:3000";
+const api = "http://localhost:3000/api";
 
 const URLParams = new URLSearchParams(window.location.search);
 
 const userID = URLParams.get("userID");
 const desiredTrajeto = URLParams.get("desiredTrajeto");
+
+
+if (!userID || !desiredTrajeto) {
+    // Redirect to login page if user is not logged in
+    window.location.href = "homepage.html";
+}
 
 const mulheresImagens = ["pessoa1.jpg", "pessoa2.jpg", "pessoa3.jpg"];
 const homensImagens = ["pessoa4.jpg", "pessoa5.jpg"];

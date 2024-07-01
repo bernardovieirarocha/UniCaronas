@@ -1,7 +1,9 @@
 // const api = 'https://json-servert1.glitch.me';
 
-const api = "http://localhost:3000";
+const api = "http://localhost:3000/api";
 
+const mulheresImagens = ["pessoa1.jpg", "pessoa2.jpg", "pessoa3.jpg"];
+const homensImagens = ["pessoa4.jpg", "pessoa5.jpg"];
 
 function showLoadingSpinner() {
     $("#loadingSpinner").show();
@@ -192,21 +194,41 @@ function fetchUsers(startPoint, destination) {
 }
 
 function displayResults(results) {
-    // Minha parte não incluiu o display dos resultados e nem a conexão desse resultado com a página de perfil do usuário para poder realmente marcar a carona
     var $results = $("#results");
     $results.empty();
+
     if (results.length) {
         results.forEach((result) => {
-            console.log(result)
-            const URL = window.location.href.replace("homepage.html", "")  +`profile.html?userID=${result.USERid}&desiredTrajeto=${result.trajeto.id}`;
-            console.log(URL);
-            var content = `<div>${result.nome} - ${result.email} - From: ${result.trajeto.start_point} to ${result.trajeto.destination} at ${result.trajeto.hour}</div>
-            <a href="${URL}">View Profile</a>`;
+            const URL = window.location.href.replace("homepage.html", "") + `profile.html?userID=${result.USERid}&desiredTrajeto=${result.trajeto.id}`;
+            const imagePath = result.sexo === "masculino"
+                ? "./assets/img/imgprofile/" + homensImagens[Math.floor(Math.random() * homensImagens.length)]
+                : "./assets/img/imgprofile/" + mulheresImagens[Math.floor(Math.random() * mulheresImagens.length)];
+            
+            var content = `
+            <div class="card mb-3" style="width: 100%;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="${imagePath}" class="img-fluid rounded-start" alt="Profile Image" style="max-width: 150px; height: auto;">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">${result.nome}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${result.email}</h6>
+                            <p class="card-text">From: ${result.trajeto.start_point} to ${result.trajeto.destination} at ${result.trajeto.hour}</p>
+                            <a href="${URL}" class="card-link">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
             $results.append(content);
         });
     } else {
-        $results.append("<div>No matches found.</div>");
+        $results.append("<div class='alert alert-warning'>No matches found.</div>");
     }
 }
+
+
+
 
 var $results = $("#results");

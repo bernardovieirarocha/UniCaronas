@@ -1,0 +1,59 @@
+{
+"users": [
+    {
+        "id": "379fd1da-088e-4f7d-91f1-bfd334b601a7",
+        "login": "EduAmorim",
+        "senha": "12345@",
+        "nome": "Ricardo Amorim",
+        "email": "amorim@gmail.com",
+        "idade": "25",
+        "cidade": "Belo Horizonte",
+        "bairro": "Castelo",
+        "CEP": "30150290",
+        "Universidade": "PUC Minas Coreu",
+        "validadacao Institucional": false,
+        "sexo": "masculino",
+        "telefone": "5531993679089"
+    }
+]
+   "dia":[
+       {
+           "id": 302,
+           "name": "Domingo", 
+       }
+       {
+              "id": 332,
+              "name": "Segunda", 
+          }
+       {
+              "id": 355,
+              "name": "Terca", 
+          }
+       {
+              "id": 405,
+              "name": "Quarta", 
+          }
+       {
+              "id": 302,
+              "name": "Quinta", 
+          }
+       {
+              "id": 340,
+              "name": "Sexta", 
+          }
+       {
+              "id": 500,
+              "name": "Sabado", 
+          }
+   ]
+    "horas":[
+        {
+            "saida": "08:30",
+            "chegada": "09:20"  
+        }
+    ]
+}
+    
+
+
+    

@@ -42,3 +42,13 @@ h1 {
         display: none;
     }
 }
+
+#loginAlert {
+    position: fixed; 
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto; 
+    z-index: 1050; 
+  }
+  

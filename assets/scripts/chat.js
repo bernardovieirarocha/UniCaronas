@@ -153,7 +153,7 @@ function deleteCarona(caronaCurrent) {
     })
         .then((response) => response.json())
         .then((data) => {
-            console.log(`Carona with ID ${caronaId} deleted successfully.`);
+            location.reload()
             return data;
         });
 }
@@ -205,6 +205,8 @@ function checkPendenciaDate(carona) {
         }
     }
 
+
+    console.log(caronaDate, today, carona.status)
     if (caronaDate < today && carona.status == "confirmada") {
         // Carona is in the past and confirmed, no action needed
         return true;
@@ -214,10 +216,11 @@ function checkPendenciaDate(carona) {
         $("#rejectionModal").on("hidden.bs.modal", function () {
             deleteCarona(carona)
                 .then(() => {
-                    console.log("aksdks");
+                    location.reload();
                 })
                 .catch((error) => {
                     console.error("Error deleting carona:", error);
+
                 });
         });
         return true;
@@ -237,7 +240,7 @@ function updateUserRating(user) {
             },
             data: JSON.stringify(user),
             success: function (data) {
-                console.log(data);
+                // console.log(data);
             },
         }).then((data) => {
             resolve(data);
@@ -256,7 +259,7 @@ function updateCurrentCarona(carona) {
             },
             data: JSON.stringify(carona),
             success: function (data) {
-                console.log(data);
+                // console.log(data);
             },
         }).then((data) => {
             location.reload()

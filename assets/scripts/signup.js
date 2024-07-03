@@ -1,7 +1,7 @@
 const api = "http://localhost:3000/api";
 
 const cadastroAPI = "http://localhost:3000/user-register";
-
+const validateEmailAPI = "http://localhost:3000/validate-email";
 
 function generateUUID() {
     // Public Domain/MIT
@@ -117,9 +117,31 @@ function toggleCarDetails() {
     }
 }
 
+async function validateInstEmail(emailInst) {
+    try {
+        const response = await fetch(validateEmailAPI, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email: emailInst }),
+        });
+        const data = await response.json();
+        return data.isAcademic;
+    } catch (error) {
+        console.error("Error validating email:", error);
+
+        if (emailInst != "") {
+            return true;
+        }
+
+        return false; // Or handle the error as appropriate
+    }
+}
 
 $(document).ready(function () {
-    $("#formCadastro").submit(function (event) {
+    toggleCarDetails();
+    $("#formCadastro").submit(async function (event) {
         event.preventDefault(); // Prevent default form submission
 
         // Collect form data
@@ -134,7 +156,7 @@ $(document).ready(function () {
         var password = $("#password").val();
         var emailCadastro = $("#emailCadastro").val();
         var emailInst = $("#emailInstitu").val();
-        var sexo = $("#sexo").find(":selected").text();
+        var sexo = $("#sexo").find(":selected").val();
         var telefone = $("#telefone").val();
 
            // Collect car details if applicable
@@ -147,6 +169,7 @@ $(document).ready(function () {
         tagsTipo = [];
         if (tipoUsuario == 1) {
             tagsTipo.push("passenger");
+            carro = null;
         } else if (tipoUsuario == 2) {
             tagsTipo.push("driver");
         } else {
@@ -154,8 +177,6 @@ $(document).ready(function () {
             tagsTipo.push("driver");
         }
 
-        console.log(universidade)
-        console.log(bairro)
 
         let dataUser = {
             username: username,
@@ -167,7 +188,7 @@ $(document).ready(function () {
             bairro: bairro,
             CEP: cep,
             universidade: universidade,
-            validadacaoInstitucional: emailInst != "" ? true : false,
+            validadacaoInstitucional: await validateInstEmail(emailInst),
             sexo: sexo,
             telefone: telefone,
             carro: {
@@ -183,7 +204,7 @@ $(document).ready(function () {
 
          // Remove car details if the user is not a driver
          if (tipoUsuario == 1) {
-            delete dataUser.carro;
+            dataUser.carro = null;
         }
 
         $.ajax({
@@ -197,6 +218,5 @@ $(document).ready(function () {
                 window.location.href = "login.html";
             }
         })
-        console.log(dataUser);
     });
 });

@@ -8,7 +8,7 @@ const desiredTrajeto = URLParams.get("desiredTrajeto");
 
 if (!userID || !desiredTrajeto) {
     // Redirect to login page if user is not logged in
-    window.location.href = "homepage.html";
+    window.location.href = "index.html";
 }
 
 const mulheresImagens = ["pessoa1.jpg", "pessoa2.jpg", "pessoa3.jpg"];
@@ -26,7 +26,7 @@ function findNextAvailableDate(days) {
 
     let daysUntilNext = daysOfWeek
         .map((day) => (day - todayDayOfWeek + 7) % 7)
-        .filter((day) => day > 0);
+        .filter((day) => day >= 0);
     if (daysUntilNext.length === 0) return null; // No available days
 
     const nextAvailableDay = Math.min(...daysUntilNext);
@@ -61,11 +61,15 @@ function loadUserProfile() {
             $("#username").text(user.nome || "Usuário");
             $("#idade").html(`<strong>Idade:</strong> ${user.idade}`);
             $("#telefone").html(`<strong>Telefone:</strong> ${user.telefone}`);
-            $("#carro").html(
-                `<strong>Carro</strong>: ${user.carro.marca} ${user.carro.modelo} (${user.carro.cor})`
-            );
+            if (user.carro != null  && user.tipo.includes("driver")) {
+                $("#carro").html(
+                    `<strong>Carro</strong>: ${user.carro.marca} ${user.carro.modelo} (${user.carro.cor})`
+                );
+              } else {
+                $("#carro").next("br").remove();
+              }
             $("#universidade").html(
-                `<strong>Universidade:</strong> ${user.Universidade}`
+                `<strong>Universidade:</strong> ${user.universidade}`
             );
             $("#bio").text(user.bio || "Sem biografia disponível");
             $("#profile_pic").attr(
@@ -124,11 +128,11 @@ function createCarona(driver, objectTRAJETO, passenger, date) {
         status: "solicitacao",
         driver: {
             nome: driver.nome,
-            id: driver.id,
+            id: parseInt(driver.id),
         },
         passenger: {
             nome: passenger.nome,
-            id: passenger.id,
+            id: parseInt(passenger.id),
         },
         date: date,
         trajetoID: objectTRAJETO.id,
@@ -164,7 +168,7 @@ function handleCarona(driver, objectTRAJETO) {
         window.location.href = "login.html";
     }
     if (objectTRAJETO.diaSemana.length > 1) {
-        console.log(objectTRAJETO.diaSemana.length);
+
         const modalTitle = document.getElementById("staticBackdropLabel");
         modalTitle.textContent = "Escolha um dia para a carona";
         const modalBody = document.getElementById("modal-body");
@@ -185,7 +189,6 @@ function handleCarona(driver, objectTRAJETO) {
         let date = formatDateForCalendar(
             findNextAvailableDate(objectTRAJETO.diaSemana)
         );
-        console.log("Date: ", date);
         createCarona(driver, objectTRAJETO, passenger, date);
     }
 }
@@ -195,7 +198,7 @@ function fetchTrajetos() {
     fetch(`${api}/users`)
         .then((response) => response.json())
         .then((users) => {
-            let myUser = users.find((user) => user.id === userID);
+            let myUser = users.find((user) => user.id == userID);
             const tabela = document.getElementById("trajetoData");
             tabela.innerHTML = ""; // Limpa a tabela antes de adicionar novos trajetos
 

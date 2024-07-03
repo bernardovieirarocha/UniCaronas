@@ -200,7 +200,7 @@ function displayResults(results) {
 
     if (results.length) {
         results.forEach((result) => {
-            const URL = window.location.href.replace("homepage.html", "") + `profile.html?userID=${result.USERid}&desiredTrajeto=${result.trajeto.id}`;
+            const URL = window.location.href.replace("index.html", "") + `profile.html?userID=${result.USERid}&desiredTrajeto=${result.trajeto.id}`;
             const imagePath = result.sexo == "masculino"
                 ? "./assets/img/imgprofile/" + homensImagens[Math.floor(Math.random() * homensImagens.length)]
                 : "./assets/img/imgprofile/" + mulheresImagens[Math.floor(Math.random() * mulheresImagens.length)];

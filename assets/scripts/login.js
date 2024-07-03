@@ -1,46 +1,56 @@
- const loginapi = "http://localhost:3000";
-
+const loginapi = "http://localhost:3000";
 
 function loginUser(username, password) {
     $.ajax({
         url: `${loginapi}/user-login`,
-        type: 'POST',
+        type: "POST",
         data: JSON.stringify({
             username: username,
             password: password,
         }),
-        contentType: 'application/json',
-        success: function(response) {
-            console.log('Login efetuado com sucesso');
+        contentType: "application/json",
+        success: function (response) {
+            console.log("Login efetuado com sucesso");
             const user = {
                 username: response.username,
                 id: response.token,
                 nome: response.nome,
-                email: response.email
+                email: response.email,
             };
-            sessionStorage.setItem('usuarioCorrente', JSON.stringify(user));
-            window.location.href = 'homepage.html';
+            sessionStorage.setItem("usuarioCorrente", JSON.stringify(user));
+            window.location.href = "index.html";
         },
-        error: function(error) {
-            console.error('Erro ao fazer login:', error);
-        }
+        error: function (error) {
+            console.error("Erro ao fazer login:", error);
+            showLoginAlert();
+        },
     });
 }
 
+var alertTimeout;
 
-$("#loginForm").submit(function(event) {
-    event.preventDefault();
+function showLoginAlert() {
+    $("#loginAlert").show();
 
-    var username = $('#username').val();
-    var password = $('#password').val();
+    clearInterval(alertTimeout);
 
-    console.log(username, password);
-    loginUser(username, password);
-})
-
-
-function logout() {
-    sessionStorage.removeItem('usuarioCorrente');
-    window.location.href = 'login.html';
+    alertTimeout = setInterval(hideLoginAlert, 9000);
 }
 
+function hideLoginAlert() {
+    $("#loginAlert").hide();
+}
+
+$("#loginForm").submit(function (event) {
+    event.preventDefault();
+
+    var username = $("#username").val();
+    var password = $("#password").val();
+
+    loginUser(username, password);
+});
+
+function logout() {
+    sessionStorage.removeItem("usuarioCorrente");
+    window.location.href = "login.html";
+}

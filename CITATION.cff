@@ -1,0 +1,43 @@
+cff-version: 1.0.1
+message: Please cite this software using these metadata.
+title: UniCaronas
+authors:
+  - family-names: Vieira Rocha
+    given-names: Bernardo
+  - family-names: Monteiro Pires Vilaça 
+    given-names: Arthur
+  - family-names: Costa Amaral 
+    given-names: João Pedro
+  - family-names: Soares Vieira
+    given-names: Pedro Augusto
+  - family-names: de Parde Motta 
+    given-names: Raquel
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Saldanha Rivero
+    given-names: Ilo Amy
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Freitas Diniz
+    given-names: Luciana Mara
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Marques Pietrobon
+    given-names: Carlos Alberto
+
+keywords:
+  - Carpooling;
+  - University;
+  - Students;
+  - Transportation;
+  - Web Application;
+  - Carona;
+  - Efficiency;
+  - Organization;
+  - Safety;
+  - Scheduling;
+
+repository-code: https://github.com/bernardovieirarocha/UniCaronas
+license: CC-BY-4.0
+version: 1.0.0
+date-released: 2024-07-14

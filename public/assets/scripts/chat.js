@@ -206,7 +206,6 @@ function checkPendenciaDate(carona) {
     }
 
 
-    console.log(caronaDate, today, carona.status)
     if (caronaDate < today && carona.status == "confirmada") {
         // Carona is in the past and confirmed, no action needed
         return true;
@@ -447,7 +446,7 @@ function loadChatMessages(caronaCurrent) {
     getUserInfo(caronaCurrent.driver.id).done(function (response) {
         localStorage.setItem("driverUser", JSON.stringify(response));
     });
-
+    console.log('"caronaCurrent"', caronaCurrent);
     $("#requestRideBlock").remove();
     // Check if the current user is the driver or the passenger (true - driver, false - passenger)
     typeCurrentCarona = CaronaType(caronaCurrent);
@@ -627,15 +626,20 @@ function loadChatMessages(caronaCurrent) {
 }
 
 function loadMessages(caronaCurrent, typeCurrentCarona) {
+    console.log("Loading messages", caronaCurrent, typeCurrentCarona);
     let currentUser = JSON.parse(sessionStorage.getItem("usuarioCorrente"));
     let messages = caronaCurrent.mensagem;
     // Show messages on the chat box
     let messageBox = $("#messages-box");
     messageBox.html("");
     messages.forEach((message) => {
+        console.log(message)
         let currentmessage = $("<div></div>").addClass("alert");
         let formatTime = formatTimestamp(message.time);
         // Check if the message is from the current user
+        console.log(message.sender, currentUser.id)
+        console.log(message.sender, caronaCurrent.driver.id)
+
         if (message.sender == currentUser.id) {
             currentmessage.addClass("alert-info");
             currentmessage.role = "alert";
@@ -656,6 +660,7 @@ function loadMessages(caronaCurrent, typeCurrentCarona) {
             currentmessage.append(
                 `<strong>${caronaCurrent.passenger.nome}:</strong> <span class="text-muted" style="float: right;"> (${formatTime})</span> <br>${message.text}`
             );
+            messageBox.append(currentmessage);
         }
     });
 
@@ -796,7 +801,7 @@ function DriverModal(caronaCurrent) {
         $("#modal-text").text(modalText);
         $("#idade span").text(`${data.idade}`);
         $("#sexo span").text(`${data.sexo}`);
-        $("#uni span").text(`${data.Universidade}`);
+        $("#uni span").text(`${data.universidade}`);
         $("#validation span").text(`${data.validadacaoInstitucional}`);
         let requestedDate = getDiaDaSemana(caronaCurrent.date);
         getUserInfo(caronaCurrent.driver.id).done(function (response) {

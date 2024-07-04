@@ -1896,7 +1896,18 @@
         "cor": "Azul",
         "placa": "asdjs"
       },
-      "trajetos": [],
+      "trajetos": [
+        {
+          "id": "badca53c-b8b0-4ca8-bf40-db716e359bc7",
+          "start_point": "Esplanada",
+          "destination": "PUCMINAS_coracao_eucaristico",
+          "hour": "07:00",
+          "regularidade": [
+            "Seg",
+            "Ter"
+          ]
+        }
+      ],
       "tipo": [
         "passenger",
         "driver"
@@ -1929,6 +1940,59 @@
           "text": "ola",
           "time": "2024-07-03T22:38:42.434Z",
           "id": "478843f3-661b-4051-a823-63047e127aff"
+        }
+      ],
+      "avaliada": {
+        "driver": false,
+        "passenger": false
+      }
+    },
+    {
+      "id": "de8a9b1a-0bf4-4b55-9b7c-012c21c66e46",
+      "status": "solicitacao",
+      "driver": {
+        "nome": "Pedro",
+        "id": 2
+      },
+      "passenger": {
+        "nome": "Bernardo Vieira Rocha",
+        "id": 1
+      },
+      "date": "2024-07-08",
+      "trajetoID": "badca53c-b8b0-4ca8-bf40-db716e359bc7",
+      "hour": "07:00",
+      "mensagem": [],
+      "avaliada": {
+        "driver": false,
+        "passenger": false
+      }
+    },
+    {
+      "id": "dbebb6ac-01a8-4d1c-a17f-5e951bde95ee",
+      "status": "confirmada",
+      "driver": {
+        "nome": "Pedro",
+        "id": 2
+      },
+      "passenger": {
+        "nome": "Bernardo Vieira Rocha",
+        "id": 1
+      },
+      "date": "2024-07-09",
+      "trajetoID": "badca53c-b8b0-4ca8-bf40-db716e359bc7",
+      "hour": "07:00",
+      "mensagem": [
+        {
+          "sender": 1,
+          "text": "Fala Pedro beleza? Vi que aceitou minha solicitação. Você se incomoda se eu levar uma mochila atrás no seu porta malas? ",
+          "time": "2024-07-03T23:54:45.983Z",
+          "id": "de3254c7-d3b3-433e-8b23-21aeecba6197"
+        },
+        {
+          "sender": 2,
+          "text": "Olá Bernardo tudo bom e você ? Claro que não tem problema, pode levar sim!",
+          "time": "2024-07-04T00:24:30.642Z",
+          "id": "503d39d9-a310-4861-93f3-346830e4b425"
         }
       ],
       "avaliada": {
